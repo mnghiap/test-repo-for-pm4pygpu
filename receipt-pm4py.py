@@ -2,13 +2,15 @@ import pandas as pd
 from pm4py.objects.conversion.log import converter as log_converter
 from pm4py.algo.discovery.dfg import algorithm as dfg_discovery
 import timeit
+import sys
 
-df = pd.read_parquet("receipt.parquet")
+df = pd.read_parquet(sys.argv[1])
 columns = df.columns
 columns = [x.replace("AAA", ":") for x in columns]
 df.columns = columns
-df.to_csv("receipt.csv")
-log_csv = pd.read_csv("receipt.csv")
+log_name = sys.argv[1].replace(".parquet", ".csv")
+df.to_csv()
+log_csv = pd.read_csv(log_name)
 
 parameters = {log_converter.Variants.TO_EVENT_LOG.value.Parameters.CASE_ID_KEY: 'case:concept:name'}
 event_log = log_converter.apply(log_csv, parameters=parameters, variant=log_converter.Variants.TO_EVENT_LOG)
