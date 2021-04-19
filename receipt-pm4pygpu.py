@@ -4,7 +4,7 @@ import cudf
 import timeit
 
 df = cudf.read_parquet("receipt.parquet")
-format.apply(df)
+df = format.apply(df)
 start = timeit.default_timer()
 dfg = dfg.get_frequency_dfg(df)
 end = timeit.default_timer()
