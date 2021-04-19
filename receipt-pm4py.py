@@ -9,7 +9,7 @@ columns = df.columns
 columns = [x.replace("AAA", ":") for x in columns]
 df.columns = columns
 log_name = sys.argv[1].replace(".parquet", ".csv")
-df.to_csv()
+df.to_csv(log_name)
 log_csv = pd.read_csv(log_name)
 
 parameters = {log_converter.Variants.TO_EVENT_LOG.value.Parameters.CASE_ID_KEY: 'case:concept:name'}
