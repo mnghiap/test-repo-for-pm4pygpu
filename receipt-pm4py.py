@@ -4,7 +4,7 @@ from pm4py.algo.discovery.dfg import algorithm as dfg_discovery
 import timeit
 import sys
 
-df = pd.read_parquet(system.argv[1])
+df = pd.read_parquet(sys.argv[1])
 columns = df.columns
 columns = [x.replace("AAA", ":") for x in columns]
 df.columns = columns
