@@ -13,7 +13,7 @@ parameters = {log_converter.Variants.TO_EVENT_LOG.value.Parameters.CASE_ID_KEY: 
 event_log = log_converter.apply(df, parameters=parameters, variant=log_converter.Variants.TO_EVENT_LOG)
 
 start = timeit.default_timer()
-dfg = dfg_discovery.apply(event_log)
+dfg = dfg_discovery.apply(df)
 end = timeit.default_timer()
 print(dfg)
 print(f"It took PM4Py {end-start} seconds to discover the DFG")
